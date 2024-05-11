@@ -118,19 +118,26 @@ fi
 #
 check_make_version()
 {
-# 获取make版本信息并解析主要版本号和次要版本号
 make_version=$(make --version | grep -oP '(?<=GNU Make )([0-9]+\.[0-9]+)')
 major_version=$(echo "$make_version" | cut -d. -f1)
 minor_version=$(echo "$make_version" | cut -d. -f2)
 
-# 检查版本是否大于等于4.1
 if [ "$major_version" -gt 4 ] || ([ "$major_version" -eq 4 ] && [ "$minor_version" -ge 1 ]); then
     echo "当前make版本为 $make_version，符合要求。"
+    # whiptail --title "make check" --msgbox " 当前版本 大于4.1 , pass." 10 60
 else
+	echo 
+	/bin/echo -e "\e[1;31m  !--------------------------------------------------------------!\e[0m"
     echo "警告：当前make版本为 $make_version，建议升级到4.1以上版本。"
+	/bin/echo -e "\e[1;31m  !--------------------------------------------------------------!\e[0m"
+	echo 
+	whiptail --title "make check" --msgbox " 当前版本 小于4.1 无法使用." 10 60
+	exit -1
 fi
 
 }
+
+
 
 
 check_ubuntu_version
@@ -149,4 +156,4 @@ setup_python_env
 
 
 echo "-------------done---------------"
-
+exit 0
