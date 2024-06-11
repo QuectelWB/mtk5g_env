@@ -7,18 +7,27 @@ echo
 /bin/echo -e "\e[1;33m   !....Installing requirement Packages.........  !\e[0m"
 /bin/echo -e "\e[1;33m   !---------------------------------------------!\e[0m"
 echo
-if [[ $HWE = "yes" ]] && [[ "$version" = *"Ubuntu 18.04"* ]];
-then
+echo $version
+echo $HWE
+#if [[ $HWE = "yes" ]] || [[ "$version" = *"Ubuntu 18.04"* ]];
+#then
 sudo apt install  -y lib32stdc++6
 sudo apt install  -y bison gcc make build-essential libc6-dev-i386 libncurses-dev wget coreutils
 sudo apt install  -y  diffstat gawk git git-core help2man libtool libxml2-dev quilt
 sudo apt install  -y  sed subversion texi2html texinfo unzip flex libtinfo5
-sudo apt install  -y re2c  g++ python-pip  python2
-sudo apt install  -y python
-sudo pip install enum34
-else
-    sudo apt-get update -y
-fi
+sudo apt install  -y re2c  g++ python-pip #  python2
+sudo apt install  -y python dos2unix  rsync 
+# lib32ncurses-dev 
+sudo pip install enum34 
+sudo apt-get install -y libncurses5-dev tmux
+
+sudo apt-get install -y  libncurses5-dev libncursesw5-dev
+# sudo apt-get install -y  ncurses-devel
+# sudo apt-get install -y  ncurses-lib
+
+#else
+#    sudo apt-get update -y
+#fi
 }
 
 get_binaries() { 
@@ -33,6 +42,7 @@ Dwnload=$(xdg-user-dir DOWNLOAD)
 cd $Dwnload
 # wget https://github.com/ninja-build/ninja/archive/v1.8.2/ninja-1.8.2.tar.gz
 # tar  xvf  ninja-1.8.2.tar.gz
+rm mtk5g_env  -rf
 git clone https://github.com/QuectelWB/mtk5g_env.git
 
 cd  mtk5g_env
