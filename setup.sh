@@ -14,6 +14,7 @@ sudo apt install  -y bison gcc make build-essential libc6-dev-i386 libncurses-de
 sudo apt install  -y  diffstat gawk git git-core help2man libtool libxml2-dev quilt
 sudo apt install  -y  sed subversion texi2html texinfo unzip flex libtinfo5
 sudo apt install  -y re2c  g++ python-pip  python2
+sudo apt install  -y python
 sudo pip install enum34
 else
     sudo apt-get update -y
